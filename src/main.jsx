@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./pages/Auth/Login.jsx"; 
 import { RegisterPage } from "./pages/Auth/Register.jsx";
@@ -20,4 +19,3 @@ export const Main = () => {
     </Router>
   );
 };
-
