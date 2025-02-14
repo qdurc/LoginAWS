@@ -1,5 +1,7 @@
 # Getting Started
 
+Login using AWS service cognito and hosted UI with react + tailwind
+
 Follow these steps to get the application running locally:
 
 1. Clone this repository using:
