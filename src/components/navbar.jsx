@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "react-oidc-context"; 
+import { useAuth } from "react-oidc-context";
 
 export const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -7,7 +7,7 @@ export const Navbar = () => {
 
     // Función para cerrar sesión con redirección a Cognito
     const signOutRedirect = () => {
-        const clientId = "2vin6oed31vp7c4mqd3u0ufhv7";
+        const clientId = import.meta.env.VITE_COGNITO_CLIENT_ID;
         const logoutUri = "http://localhost:5173/";
         const cognitoDomain = "https://us-east-1piftfbh4h.auth.us-east-1.amazoncognito.com";
         window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
@@ -22,8 +22,8 @@ export const Navbar = () => {
                 </a>
 
                 {/* Botón para menú en mobile */}
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                     <span className="sr-only">Open main menu</span>
                     <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -41,8 +41,8 @@ export const Navbar = () => {
                         {/* Dropdown Profile */}
                         {auth.isAuthenticated ? (
                             <li className="relative">
-                                <button 
-                                    onClick={() => setIsDropdownOpen(!isDropdownOpen)} 
+                                <button
+                                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                     className="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                                     {auth.user?.profile.email}
                                     <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -65,7 +65,7 @@ export const Navbar = () => {
                                         </li>
                                     </ul>
                                     <div className="py-1">
-                                        <button 
+                                        <button
                                             onClick={signOutRedirect}
                                             className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                             Sign out
@@ -75,7 +75,7 @@ export const Navbar = () => {
                             </li>
                         ) : (
                             <li>
-                                <button 
+                                <button
                                     onClick={() => auth.signinRedirect()}
                                     className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                                     Sign in

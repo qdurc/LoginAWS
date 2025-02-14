@@ -1,7 +1,7 @@
 export const cognitoAuthConfig = {
-  authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_piFTFbh4H",
-  client_id: "2vin6oed31vp7c4mqd3u0ufhv7",
-  redirect_uri: "http://localhost:5173/",
+  authority: import.meta.env.VITE_COGNITO_AUTHORITY,
+  client_id: import.meta.env.VITE_COGNITO_CLIENT_ID,
+  redirect_uri: import.meta.env.VITE_COGNITO_REDIRECT_URI,
   response_type: "code",
   scope: "email openid",
 };
